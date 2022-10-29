@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addRow,selectColor,updateCell,resetBoard } from '../slices/gameSlice';
 
-const Board = () => {
+const Board = ({Table}) => {
     const dispatch = useDispatch();
 
     const handleButtonClick = () => {
@@ -12,10 +12,6 @@ const Board = () => {
 
     const handleColorSelector = (event) =>{
         dispatch(selectColor(event.target.value));
-    };
-
-    const handleCellUpdate = (rowIndex, cellIndex) => {
-        dispatch(updateCell({rowIndex,cellIndex}));
     };
 
     const handleResetBoard = () => {
@@ -45,15 +41,7 @@ const Board = () => {
                 </select>
                 <button id='reset-board' onClick={handleResetBoard}>Reset board</button>
             </div>
-            <table>
-                <tbody>
-                    {grid.map((row, rowIndex ) =>
-                        <tr key={rowIndex}>
-                            {row.map((color, cellIndex) => <td onMouseOver={()=>{handleCellUpdate(rowIndex,cellIndex)}} key={cellIndex} className={color}></td>)}
-                        </tr>
-                    )}
-                </tbody>
-            </table>
+                <Table />
             </div>
     );
 };
