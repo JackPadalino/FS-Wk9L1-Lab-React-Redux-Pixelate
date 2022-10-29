@@ -11,13 +11,8 @@ export const gameSlice = createSlice({
     name: 'game',
     initialState,
     reducers: {
-<<<<<<< HEAD
         // Future actions go here
         addRow:(state,action) => {
-=======
-        // actions go here
-        addRow: (state,action) => {
->>>>>>> 8a92df30176018fff04b4be6b35033023072d8ad
             const newRow = Array(20).fill('');
             state.grid.push(newRow); 
         },
@@ -26,11 +21,15 @@ export const gameSlice = createSlice({
         },
         updateCell:(state,action) => {
             const { rowIndex, cellIndex } = action.payload;
-            console.log({rowIndex,cellIndex});
             state.grid[rowIndex][cellIndex] = state.selectedColor;
         },
         resetBoard:(state,action)=>{
-            //need to loop over the entire board and reset the color of each cell
+            state.selectedColor='gray';
+            for(let a=0;a<state.grid.length;a++) {
+                for(let b=0;b<state.grid[a].length;b++) {
+                    state.grid[a][b] = state.selectedColor;
+                };
+            };
         }
     }
 });

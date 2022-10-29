@@ -11,7 +11,6 @@ const Board = () => {
     };
 
     const handleColorSelector = (event) =>{
-<<<<<<< HEAD
         dispatch(selectColor(event.target.value));
     };
 
@@ -21,15 +20,6 @@ const Board = () => {
 
     const handleResetBoard = () => {
         dispatch(resetBoard());
-=======
-        const payload = event.target.value
-        dispatch(selectColor(payload))
-    };
-
-    const handleCellUpdate = (rowIndex, cellIndex) => {
-        const payload = {rowIndex,cellIndex} // action functions can only receive a single payload object, so we wrap multiple arguments in a single payload object!
-        dispatch(updateCell(payload))
->>>>>>> 8a92df30176018fff04b4be6b35033023072d8ad
     };
 
     const grid = useSelector(state => state.game.grid);
@@ -40,12 +30,8 @@ const Board = () => {
             <h1>Pixelate</h1>
             <div>
                 <button id='add-row' onClick={handleButtonClick}>Add a row</button>
-<<<<<<< HEAD
                 <select onChange={handleColorSelector}>
                     <option value="gray">-</option>
-=======
-                <select value={selectedColor} onChange={handleColorSelector}>
->>>>>>> 8a92df30176018fff04b4be6b35033023072d8ad
                     <option value="red">Red</option>
                     <option value="orange">Orange</option>
                     <option value="yellow">Yellow</option>
